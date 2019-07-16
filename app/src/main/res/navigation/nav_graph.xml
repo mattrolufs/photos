@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/collectionsFragment2">
+    <fragment
+        android:id="@+id/collectionsFragment2"
+        android:name="com.rolufs.photos.view.CollectionsFragment"
+        android:label="Collections"
+        tools:layout="@layout/collections_fragment" >
+        <action
+            android:id="@+id/action_collectionsFragment2_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.rolufs.photos.view.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/details_fragment" >
+        <argument
+            android:name="photoId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
