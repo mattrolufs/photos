@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.rolufs.photos.viewmodel.CollectionsViewModel
 import com.rolufs.photos.R
+import com.rolufs.photos.model.response.Photo
 import com.rolufs.photos.model.response.PhotoAPI
 import kotlinx.android.synthetic.main.collections_fragment.*
 import kotlinx.coroutines.Dispatchers
@@ -42,10 +44,9 @@ class CollectionsFragment : Fragment() {
 
         val photoAPI = PhotoAPI()
 
-        GlobalScope.launch(Dispatchers.Main) {
-            val photos = photoAPI.getPhotos().await()
-            textView.text = photos.size.toString()
-        }
+        viewModel.fetchPhotos().observe(this, Observer<List<Photo>> {
+                textView.text = it.size.toString()
+            })
     }
 
 }
