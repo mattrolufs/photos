@@ -10,6 +10,12 @@ import android.widget.Button
 import androidx.navigation.findNavController
 import com.rolufs.photos.viewmodel.CollectionsViewModel
 import com.rolufs.photos.R
+import com.rolufs.photos.model.response.PhotoAPI
+import kotlinx.android.synthetic.main.collections_fragment.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class CollectionsFragment : Fragment() {
@@ -27,24 +33,19 @@ class CollectionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //return inflater.inflate(R.layout.collections_fragment, container, false)
-
-        viewOfLayout = inflater.inflate(R.layout.collections_fragment, container, false)
-
-        button = viewOfLayout.findViewById(R.id.button)
-
-        button!!.setOnClickListener{ view ->
-            view.findNavController().navigate(R.id.action_collectionsFragment2_to_detailsFragment)
-
-        }
-
-        return viewOfLayout
+        return inflater.inflate(R.layout.collections_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CollectionsViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        val photoAPI = PhotoAPI()
+
+        GlobalScope.launch(Dispatchers.Main) {
+            val photos = photoAPI.getPhotos().await()
+            textView.text = photos.size.toString()
+        }
     }
 
 }
