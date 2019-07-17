@@ -41,7 +41,6 @@ class CollectionsFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recycler_view_photos.layoutManager = layoutManager
 
-
         viewModel.fetchPhotos().observe(this, Observer<List<Photo>> {
                 val photosAdapter = CollectionsAdapter(it)
             recycler_view_photos.adapter = photosAdapter
