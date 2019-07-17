@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.rolufs.photos.R
-import com.rolufs.photos.model.response.Photo
+import com.rolufs.photos.model.Photo
 import kotlinx.android.synthetic.main.photos_item.view.*
 
 class CollectionsAdapter(val photos: List<Photo>) : RecyclerView.Adapter<CollectionsAdapter.PhotoHolder>() {

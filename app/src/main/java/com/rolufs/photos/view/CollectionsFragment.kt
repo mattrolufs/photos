@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rolufs.photos.R
-import com.rolufs.photos.model.response.Photo
+import com.rolufs.photos.model.Photo
 import com.rolufs.photos.viewmodel.CollectionsViewModel
 import kotlinx.android.synthetic.main.collections_fragment.*
 

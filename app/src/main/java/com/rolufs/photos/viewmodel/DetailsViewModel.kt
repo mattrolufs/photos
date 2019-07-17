@@ -2,8 +2,8 @@ package com.rolufs.photos.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
-import com.rolufs.photos.model.response.Photo
-import com.rolufs.photos.model.response.PhotoAPI
+import com.rolufs.photos.model.Photo
+import com.rolufs.photos.model.PhotoAPI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
