@@ -1,23 +1,19 @@
 package com.rolufs.photos.view
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import com.rolufs.photos.viewmodel.CollectionsViewModel
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.rolufs.photos.R
 import com.rolufs.photos.model.response.Photo
-import com.rolufs.photos.model.response.PhotoAPI
+import com.rolufs.photos.viewmodel.CollectionsViewModel
 import kotlinx.android.synthetic.main.collections_fragment.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
 class CollectionsFragment : Fragment() {
@@ -42,11 +38,14 @@ class CollectionsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CollectionsViewModel::class.java)
 
-        val photoAPI = PhotoAPI()
+        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recycler_view_photos.layoutManager = layoutManager
+
 
         viewModel.fetchPhotos().observe(this, Observer<List<Photo>> {
-                textView.text = it.size.toString()
-            })
+                val photosAdapter = CollectionsAdapter(it)
+            recycler_view_photos.adapter = photosAdapter
+        })
     }
 
 }

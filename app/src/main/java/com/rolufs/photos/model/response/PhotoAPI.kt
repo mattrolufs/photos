@@ -12,11 +12,11 @@ val url = "https://jsonplaceholder.typicode.com/"
 
 interface PhotoAPI {
 
-    @GET ("photos")
-    fun getPhotos() :Deferred<List<Photo>>
+    @GET("photos")
+    fun getPhotos(): Deferred<List<Photo>>
 
     @GET("photos/{photo}")
-    fun getPhoto(@Path("photo") photo: Int) : Deferred<Photo>
+    fun getPhoto(@Path("photo") photo: Int): Deferred<Photo>
 
     companion object {
         operator fun invoke(): PhotoAPI {

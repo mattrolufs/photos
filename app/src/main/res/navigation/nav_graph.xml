@@ -11,7 +11,9 @@
         tools:layout="@layout/collections_fragment" >
         <action
             android:id="@+id/action_collectionsFragment2_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@+id/detailsFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
